@@ -1,4 +1,5 @@
 #include <stdio.h> // Input and output- fgets, fclose, fopen.
+#include <string.h> // Str
 #include <stdlib.h> // Exit.
 
 void search_in_file(char *fname, char *str) {
