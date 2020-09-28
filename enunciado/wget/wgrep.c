@@ -25,6 +25,7 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
 
+// Use stdin instead of file if only one parameter
     char *str = argv[1];
     if (argc == 2) {
         char buffer[500];
@@ -35,6 +36,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
+// Search terms from files line by line
     for(int i=2; i<argc; i++) {
         search_in_file(argv[i],str);
     }
