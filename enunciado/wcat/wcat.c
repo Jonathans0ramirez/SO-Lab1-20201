@@ -1,24 +1,28 @@
-#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-int main(int argc, char *argv[])
-{
-  for(int i = 1; i < argc; i++){
-    char *line = NULL;
-    size_t len = 0;
-    ssize_t read;
+#define LINE_SIZE 100
 
-    FILE *fp = fopen(argv[i], "r");
-    if (fp == NULL) {
-      printf("wcat: cannot open file %s\n", argv[i]);
+FILE *r_file;
+void print_file_content(char *file_name, int line_size) {
+    r_file = fopen(file_name, "r");
+    if (r_file == NULL) {
+        printf("wcat: cannot open file\n");
+        exit(1);
+    }
+    char content[line_size];
+    while (fgets(content, line_size, r_file) != NULL) {
+      printf("%s", content);
+    }
+    fclose(r_file);
+}
+int main(int argc, char *argv[]) {
+    if (!argc) {
       exit(1);
     }
-
-    while ((read = getline(&line, &len, fp)) != -1) {
-        printf("%s", line);
+    for (int i=1; i<argc; i++) {
+      print_file_content(argv[i], LINE_SIZE);
     }
-    printf("%s","\n------------------------------------\n");
-  }
-  exit(0);
+    return 0;
 }
