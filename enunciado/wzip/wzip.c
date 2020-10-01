@@ -4,7 +4,7 @@
 
 void compresFile(char *fileName, char *oldChar, int *characterRep)
 {
-    FILE file = fopen(fileName, "r");
+    FILE *file = fopen(fileName, "r");
     if (file == NULL)
     {
         printf("wgrep: cannot open file\n");
