@@ -10,7 +10,7 @@ void compresFile(char *fileName, char *oldChar, int *characterRep)
 		printf("wgrep: cannot open file\n");
 		exit(1);
 	}
-	char *actChar = fgetc(file);
+	int actChar = fgetc(file);
 
 	if (oldChar == 0)
 	{
