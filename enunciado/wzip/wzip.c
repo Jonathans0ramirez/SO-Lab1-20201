@@ -12,10 +12,10 @@ void compresFile(char *fileName, char *oldChar, int *characterRep)
 	}
 	char actChar = fgetc(file);
 
-	if (oldChar == 0)
+	if (*oldChar == 0)
 	{
 		*oldChar = actChar;
-		characterRep = 0;
+		*characterRep = 0;
 	}
 
 	do
@@ -29,7 +29,7 @@ void compresFile(char *fileName, char *oldChar, int *characterRep)
 		}
 		else
 		{
-			(characterRep)++;
+			(*characterRep)++;
 		}
 	} while ((actChar = fgetc(file)) != EOF);
 	fclose(file);
